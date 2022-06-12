@@ -1,0 +1,28 @@
+* html {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Open Sans", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.gradient-bg-main {
+    background-color: #FCF8E8;
+    background-image:
+        radial-gradient(at 0% 0%, hsla(120, 90%, 85%, 0.2) 0, transparent 50%),
+        radial-gradient(at 50% 0%, hsla(23, 70%, 80%, 1) 0, transparent 50%),
+        radial-gradient(at 100% 0%, hsla(11, 66.3%, 75%, 1) 0, transparent 50%);
+}
+
+
+
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
