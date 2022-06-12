@@ -1,9 +1,17 @@
 import React from "react";
 
+import { Header, Posts, Form } from "./components";
+
 const App = () => {
   return (
-    <div>
-      <h1>App</h1>
+    <div className="min-h-screen gradient-bg-main">
+      <Header />
+      <div className="grid grid-cols-3 gap-4">
+        <div className="col-span-2">
+          <Posts />
+        </div>
+        <Form />
+      </div>
     </div>
   );
 };
