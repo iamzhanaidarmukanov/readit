@@ -19,10 +19,10 @@ const Post = () => {
       <h1 className='font-bookheading inline-block relative text-xl text-[#94b49f] m-none'>Martin Eden</h1>
       <h2 className='font-bookheading inline-block relative text-l text-[#94b49f] m-none'>by Jack London</h2>
       <Rating />
-      <p class="font-review text-center text-sm text-[7d7d7d]">" Let's spread the joy , here is Christmas , the most awaited day of the year.Christmas Tree is what one need the most. Here is the correct tree which will enhance your Christmas.</p>
+      <p className="font-review text-center text-sm text-[7d7d7d]">" Let's spread the joy , here is Christmas , the most awaited day of the year.Christmas Tree is what one need the most. Here is the correct tree which will enhance your Christmas.</p>
       <div className='absolute bottom-8 left-1/4'>
-        <button class="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12">
-          <span class="font-edit inline-block p-10px-20px text-l m-0">Delete</span>
+        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12">
+          <span className="font-edit inline-block p-10px-20px text-l m-0">Delete</span>
         </button>
       </div>
     </div>
