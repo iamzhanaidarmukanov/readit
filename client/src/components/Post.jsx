@@ -12,22 +12,25 @@ const Rating = () => {
   )
 }
 
-const Post = () => {
+const Post = ({post}) => {
   return (
   <div className='shadow-[0_5px_10px_-1px_grey] bg-white text-center rounded overflow-hidden h-[300px] w-auto mb-4'>
     <div className='relative text-left overflow-hidden p-[20px] h-[100%] float-left w-[55%]'>
-      <h1 className='font-bookheading inline-block relative text-xl text-[#94b49f] m-none'>Martin Eden</h1>
-      <h2 className='font-bookheading inline-block relative text-l text-[#94b49f] m-none'>by Jack London</h2>
+      <h1 className='font-bookheading inline-block relative text-xl text-[#94b49f] m-none'>{post.title}</h1>
+      <h2 className='font-bookheading inline-block relative text-l text-[#94b49f] m-none'>by {post.author}</h2>
       <Rating />
-      <p className="font-review text-center text-sm text-[7d7d7d]">" Let's spread the joy , here is Christmas , the most awaited day of the year.Christmas Tree is what one need the most. Here is the correct tree which will enhance your Christmas.</p>
+      <p className="font-review text-center text-sm text-[7d7d7d]">{post.review}</p>
       <div className='absolute bottom-8 left-1/4'>
-        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12">
+        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12" onClick={() => {}}>
+          <span className="font-edit inline-block p-10px-20px text-l m-0">View</span>
+        </button>
+        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12" onClick={() => {}}>
           <span className="font-edit inline-block p-10px-20px text-l m-0">Delete</span>
         </button>
       </div>
     </div>
       <div className='inline-block relative overflow-hidden h-[100%] float-right w-[45%]'>
-        <img src="https://images-na.ssl-images-amazon.com/images/I/41TpuuUdewL._SY291_BO1,204,203,200_QL40_FMwebp_.jpg" alt="" />
+        <img src={post.selectedFile} alt="" />
       </div>
     </div>
   )

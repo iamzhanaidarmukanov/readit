@@ -7,10 +7,9 @@ const Posts = () => {
   console.log(posts);
   return (
     <div className='grid grid-cols-3 gap-2 m-[0.5em] ml-[1em]'>
-      <Post />
-      <Post />
-      <Post />
-      <Post />
+      {posts.map((post) => (
+        <Post key={post.id} post={post} />
+      ))}
     </div>
   )
 }
