@@ -1,4 +1,6 @@
 import React from 'react'
+import {useDispatch} from "react-redux"
+import {deletePost} from '../actions/posts'
 
 const Rating = () => {
   return (
@@ -13,6 +15,7 @@ const Rating = () => {
 }
 
 const Post = ({post, setCurrentId}) => {
+  const dispatch = useDispatch()
   return (
   <div className='shadow-[0_5px_10px_-1px_grey] bg-white text-center rounded overflow-hidden h-[300px] w-auto mb-4'>
     <div className='relative text-left overflow-hidden p-[20px] h-[100%] float-left w-[55%]'>
@@ -24,7 +27,7 @@ const Post = ({post, setCurrentId}) => {
         <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12" onClick={() => setCurrentId(post._id)}>
           <span className="font-edit inline-block p-10px-20px text-l m-0">View</span>
         </button>
-        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12" onClick={() => {}}>
+        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-0 m-0 text-[#eee] hover:bg-[#1a66ff] w-12" onClick={() => dispatch(deletePost(post._id))}>
           <span className="font-edit inline-block p-10px-20px text-l m-0">Delete</span>
         </button>
       </div>

@@ -3,6 +3,7 @@ import * as api from "../api";
 // Action Creators
 export const getPosts = () => async (dispatch) => {
   try {
+    // usually const response
     const { data } = await api.fetchPosts();
     return dispatch({ type: "FETCH_ALL", payload: data });
   } catch (error) {
@@ -25,5 +26,14 @@ export const updatePost = (id, post) => async (dispatch) => {
     dispatch({ type: "UPDATE", payload: data });
   } catch (error) {
     console.log(error.message);
+  }
+};
+
+export const deletePost = (id) => async (dispatch) => {
+  try {
+    await api.deletePost(id);
+    dispatch({ type: "DELETE", payload: id });
+  } catch (error) {
+    console.log(error);
   }
 };
