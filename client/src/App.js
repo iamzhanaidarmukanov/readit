@@ -12,11 +12,11 @@ const App = () => {
   return (
     <div className="min-h-screen gradient-bg-main">
       <Header />
-      <div className="grid grid-cols-3 gap-4">
-        <div className="col-span-2">
+      <div className="grid lg:grid-cols-3 gap-4 md:grid-cols-2 grid-cols-1">
+        <Form currentId={currentId} setCurrentId={setCurrentId} />
+        <div className="col-span-1 lg:col-span-2">
           <Posts setCurrentId={setCurrentId} />
         </div>
-        <Form currentId={currentId} setCurrentId={setCurrentId} />
       </div>
     </div>
   );
