@@ -39,7 +39,7 @@ const Form = ({currentId, setCurrentId}) => {
     <div className='shadow-[0_5px_10px_-1px_grey] bg-white text-center rounded overflow-visible h-[300px] w-auto m-[0.5em]'>
       <h1 className='text-3xl font-bold text-center font-bookheading'>&bull;{currentId ? "Edit" : "Add"} Book &bull;</h1>
       <div className="text-center border-2 w-[50%] relative m-auto bg-[#94b49f]"></div>
-      <form autoComplete='off' action="#" method="post" className='p-auto m-auto text-center font-review w-full'>
+      <form autoComplete='off' action="#" method="post" className='p-auto m-auto text-center font-review w-full' onSubmit={handleSubmit}>
         <div className="m-4"> 
           <input className='border-b-2' type="text" placeholder="Title" value={postData.title} required onChange={(e) => setPostData({...postData, title:e.target.value})} />
         </div>
@@ -52,7 +52,7 @@ const Form = ({currentId, setCurrentId}) => {
         <div className="m-4"> 
           <input className='border-b-2' name="message" placeholder="Image Link" value={postData.selectedFile} id="message_input" cols="50" rows="2" required onChange={(e) => setPostData({...postData, selectedFile:e.target.value})}></input>
         </div>
-        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-1 m-1 text-[#eee] hover:bg-[#1a66ff] w-1/3" onClick={handleSubmit}>
+        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-1 m-1 text-[#eee] hover:bg-[#1a66ff] w-1/3" type="submit">
           <span className="font-edit inline-block p-10px-20px text-l m-0" type='submit'>Post</span>
         </button>
         <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-1 m-1 text-[#eee] hover:bg-[#1a66ff] w-1/3" onClick={clear}>
