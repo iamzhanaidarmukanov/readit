@@ -16,6 +16,7 @@ const Form = ({currentId, setCurrentId}) => {
     } else {
       dispatch(createPost(postData))
     }
+    clear()
   }
 
   // Updating Post : Populating the Form
@@ -25,12 +26,18 @@ const Form = ({currentId, setCurrentId}) => {
   }, [post])
 
   const clear = () => {
-
+    setCurrentId(null)
+    setPostData({
+    author:'',
+    title:'',
+    review:'',
+    selectedFile:''
+  })
   }
   const dispatch = useDispatch()
   return (
     <div className='shadow-[0_5px_10px_-1px_grey] bg-white text-center rounded overflow-visible h-[300px] w-auto m-[0.5em]'>
-      <h1 className='text-3xl font-bold text-center font-bookheading'>&bull; Add Book &bull;</h1>
+      <h1 className='text-3xl font-bold text-center font-bookheading'>&bull;{currentId ? "Edit" : "Add"} Book &bull;</h1>
       <div className="text-center border-2 w-[50%] relative m-auto bg-[#94b49f]"></div>
       <form autoComplete='off' action="#" method="post" className='p-auto m-auto text-center font-review w-full'>
         <div className="m-4"> 
@@ -48,7 +55,7 @@ const Form = ({currentId, setCurrentId}) => {
         <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-1 m-1 text-[#eee] hover:bg-[#1a66ff] w-1/3" onClick={handleSubmit}>
           <span className="font-edit inline-block p-10px-20px text-l m-0" type='submit'>Post</span>
         </button>
-        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-1 m-1 text-[#eee] hover:bg-[#1a66ff] w-1/3" onClick={()=>{}}>
+        <button className="bg-[#809fff]  rounded relative overflow-hidden cursor-pointer outline-none border-none p-1 m-1 text-[#eee] hover:bg-[#1a66ff] w-1/3" onClick={clear}>
           <span className="font-edit inline-block p-10px-20px text-l m-0" onClick={clear}>Clear</span>
         </button>
       </form>
