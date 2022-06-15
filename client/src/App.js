@@ -1,9 +1,10 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Header, Posts, Form } from "./components";
 import { useDispatch } from "react-redux";
 import { getPosts } from "./actions/posts";
 
 const App = () => {
+  const [currentId, setCurrentId] = useState(null);
   const dispatch = useDispatch();
   useEffect(() => {
     dispatch(getPosts());
@@ -13,9 +14,9 @@ const App = () => {
       <Header />
       <div className="grid grid-cols-3 gap-4">
         <div className="col-span-2">
-          <Posts />
+          <Posts setCurrentId={setCurrentId} />
         </div>
-        <Form />
+        <Form currentId={currentId} setCurrentId={setCurrentId} />
       </div>
     </div>
   );
