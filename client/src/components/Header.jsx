@@ -15,7 +15,7 @@ const Header = () => {
           <a href="/"><h1 className='text-5xl font-fancy'>read it</h1></a>
         </div>
         <div className="md:flex cursor-pointer md:w-auto px-4 py-2 text-right bg-[#809fff] hover:bg-[#1a66ff] text-white font-edit rounded">
-        {user ? <div>Hello</div> : <button onClick={() => {}}>Sign In</button>}
+        {user ? <div>Hello</div> :  <a href="/auth"><button>Sign In</button></a>}
         </div>
     </div>
   )

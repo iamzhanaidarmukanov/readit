@@ -37,7 +37,7 @@ const Form = ({currentId, setCurrentId}) => {
   const dispatch = useDispatch()
   return (
     <div className='shadow-[0_5px_10px_-1px_grey] bg-white text-center rounded overflow-visible h-auto w-auto m-[0.5em]'>
-      <h1 className='text-3xl font-bold text-center font-bookheading'>&bull;{currentId ? "Edit" : "Add"} Book &bull;</h1>
+      <h1 className='text-3xl font-bold text-center font-bookheading'>&bull;{currentId ? "Edit" : "Add"} Book&bull;</h1>
       <div className="text-center border-2 w-[50%] relative m-auto bg-[#94b49f]"></div>
       <form autoComplete='off' action="#" method="post" className='p-auto m-auto text-center font-review w-full' onSubmit={handleSubmit}>
         <div className="m-4"> 
