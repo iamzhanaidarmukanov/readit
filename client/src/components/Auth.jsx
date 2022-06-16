@@ -15,11 +15,11 @@ const Auth = () => {
   }
 
 
-  const googleSuccess = () => {
-
+  const googleSuccess = (res) => {
+    console.log(res);
   }
   const googleFailure = () => {
-    
+    console.log("Google Sign In failed. Try again later");
   }
 
   return (
