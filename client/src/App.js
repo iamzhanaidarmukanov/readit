@@ -1,12 +1,18 @@
 import React from "react";
-import { Header, Home } from "./components";
+import { Header, Home, Auth } from "./components";
+import { BrowserRouter, Switch, Route } from "react-router-dom";
 
 const App = () => {
   return (
-    <div className="min-h-screen gradient-bg-main">
-      <Header />
-      <Home />
-    </div>
+    <BrowserRouter>
+      <div className="min-h-screen gradient-bg-main">
+        <Header />
+        <Switch>
+          <Route path="/" exact component={Home} />
+          <Route path="/auth" exact component={Auth} />
+        </Switch>
+      </div>
+    </BrowserRouter>
   );
 };
 
