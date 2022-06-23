@@ -4,6 +4,8 @@ import jwtDecode from 'jwt-decode'
 import {useDispatch} from 'react-redux'
 import {useNavigate} from "react-router-dom";
 
+import {signUp, signIn} from '../actions/auth'
+
 const Auth = () => {
   const dispatch = useDispatch()
   const navigate = useNavigate()
@@ -37,17 +39,30 @@ const Auth = () => {
     )
   }, [])
 
-  // if no user, show sign in button
-  // if a user, show sign out button
-
   // Google Handling End ///////////////////////////////////
 
   const [isSignUp, setIsSignUp] = useState(false)
-  const handleSubmit = () => {
 
+
+  // Registration and Sign Up Form Data
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    password: "",
+    confirmPassword: ""
+  })
+  const handleSubmit = (e) => {
+    e.preventDefault()
+
+    if (isSignUp) {
+      dispatch(signUp(formData, history))
+    } else {
+      dispatch(signIn(formData, history))
+    }
   }
-  const handleChange = () => {
-
+  const handleChange = (e) => {
+    setFormData({...formData, [e.target.name]: e.target.value})
   }
   const changeMode = () => {
     setIsSignUp(!isSignUp)
@@ -69,11 +84,13 @@ const Auth = () => {
           <input className='w-2/3 md:w-[100px] border-b-2 mx-2' type="text" placeholder="Last Name" name="lastName" required onChange={handleChange} />
           <br />
         </>}
-        <input className='w-2/3 md:w-[200px] border-b-2' type="text" placeholder="Email" required onChange={handleChange} />
+        <input className='w-2/3 md:w-[200px] border-b-2' type="text" placeholder="Email" name="email" required onChange={handleChange} />
         <br />
-        <input className='w-2/3 md:w-[200px] border-b-2' type="text" placeholder="Password" required onChange={handleChange} />
+        
+        <input className='w-2/3 md:w-[200px] border-b-2' type="text" placeholder="Password" name='password' required onChange={handleChange} />
+
         <br />
-        {isSignUp && <input className='w-2/3 md:w-[200px] border-b-2' type="text" placeholder="Confirm Password" required onChange={handleChange} />
+        {isSignUp && <input className='w-2/3 md:w-[200px] border-b-2' type="text" placeholder="Confirm Password" name='confirmPassword' required onChange={handleChange} />
         }
         <br />
         <div className='w-[100px] mx-auto my-2 cursor-pointer bg-[#809fff]  text-white font-review rounded'>
