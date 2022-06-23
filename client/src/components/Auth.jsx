@@ -1,17 +1,28 @@
 import React from 'react'
 import { useState, useEffect } from 'react'
 import jwtDecode from 'jwt-decode'
+import {useDispatch} from 'react-redux'
+import {useNavigate} from "react-router-dom";
 
 const Auth = () => {
+  const dispatch = useDispatch()
+  const navigate = useNavigate()
 
-  const [user, setUser] = useState({})
+  const [result, setResult] = useState({})
 
-  // Google Handling 
+  // Google Handling ///////////////////////////////////
   const handleCallbackResponse = (res) => {
-    console.log("Encoded JWT ID Token: " + res.credential);
-    let userObject = jwtDecode(res.credential)
-    setUser(userObject)
-    console.log(userObject);
+    // console.log("Encoded JWT ID Token: " + res.credential);
+    let token = res.credential
+    let result = jwtDecode(token)
+    setResult(result)
+    // console.log(result);
+    try {
+      dispatch({type:"AUTH", data: {result, token}})
+      navigate("/");
+    } catch (error) {
+      console.log(error);
+    }
   }
   useEffect(() => {
     /* global google */
@@ -29,7 +40,7 @@ const Auth = () => {
   // if no user, show sign in button
   // if a user, show sign out button
 
-  // Google Handling End
+  // Google Handling End ///////////////////////////////////
 
   const [isSignUp, setIsSignUp] = useState(false)
   const handleSubmit = () => {
