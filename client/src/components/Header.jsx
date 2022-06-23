@@ -32,8 +32,8 @@ const Header = () => {
         <div>
         {user ?
          <div className='flex items-center'>
-          {/* <div className='m-4'><img className='object-cover'>{user.result.picture}</img></div> */}
-          <div className='m-4'><h1>{user.result.given_name}</h1></div>
+          <div className='m-4 '><img className='object-fill rounded-3xl' src={user.result.picture} alt="img" /></div>
+          <div className='m-4 text-xl font-review'><h1>{user.result.given_name}</h1></div>
           <div className="md:flex cursor-pointer md:w-auto px-4 py-2 text-right bg-[#8b0000] hover:bg-[#FF0000 text-white font-edit rounded">
             <button onClick={logout}>Sign Out</button>
           </div>
