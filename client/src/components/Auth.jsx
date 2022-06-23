@@ -1,8 +1,36 @@
 import React from 'react'
-import { useState } from 'react'
-import {GoogleLogin} from 'react-google-login'
+import { useState, useEffect } from 'react'
+import jwtDecode from 'jwt-decode'
 
 const Auth = () => {
+
+  const [user, setUser] = useState({})
+
+  // Google Handling 
+  const handleCallbackResponse = (res) => {
+    console.log("Encoded JWT ID Token: " + res.credential);
+    let userObject = jwtDecode(res.credential)
+    setUser(userObject)
+    console.log(userObject);
+  }
+  useEffect(() => {
+    /* global google */
+    google.accounts.id.initialize({
+      client_id: "1082905631463-o8ek4p5mhv95qlv6p3bpj5t3gmpvifpb.apps.googleusercontent.com",
+      callback: handleCallbackResponse
+    })
+
+    google.accounts.id.renderButton(
+      document.getElementById("signInDiv"),
+      { theme: "outline", size:"large"}
+    )
+  }, [])
+
+  // if no user, show sign in button
+  // if a user, show sign out button
+
+  // Google Handling End
+
   const [isSignUp, setIsSignUp] = useState(false)
   const handleSubmit = () => {
 
@@ -12,15 +40,6 @@ const Auth = () => {
   }
   const changeMode = () => {
     setIsSignUp(!isSignUp)
-  }
-
-
-  const googleSuccess = async (res) => {
-    console.log(res);
-  }
-  const googleFailure = (error) => {
-    console.log(error);
-    console.log("Google Sign In failed. Try again later");
   }
 
   return (
@@ -60,29 +79,11 @@ const Auth = () => {
           <span className="p-2 text-gray-400 mb-1">OR</span>
         <hr className="w-full"/>
       </div>
-
-        <GoogleLogin 
-          clientId='1082905631463-uoeki5spdcmbi4e7g8q8tgrggfjum5t8.apps.googleusercontent.com'
-          render = {(renderProps) => (
-            <button className="h-8 text-white w-full rounded-lg bg-red-700 hover:bg-red-900" onClick={renderProps.onClick} variant="contained" disabled={renderProps.disabled}>
-              <i className="fa fa-google mr-2" />
-              Google
-            </button>
-          )}
-          onSuccess={googleSuccess}
-          onFailure={googleFailure}
-          cookiePolicy="single_host_origin"
-          />
+      
+      <div id='signInDiv' className="items-center m-l-50%"></div>
 
     </div>
   )
 }
 
 export default Auth
-
-// { "error": "idpiframe_initialization_failed", 
-// "details": "You have created a new client application that uses libraries for user authentication
-//  or authorization that will soon be deprecated. 
-// New clients must use the new libraries instead; 
-// existing clients must also migrate before these libraries are deprecated. 
-// See the [Migration Guide](https://developers.google.com/identity/gsi/web/guides/gis-migration) for more information." }
