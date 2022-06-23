@@ -15,9 +15,14 @@ export const signIn = (formData, history) => async (dispatch) => {
 export const signUp = (formData, history) => async (dispatch) => {
   const navigate = useNavigate();
   try {
-    // login the user
+    // send the Post Request to Create a new user with given data
     navigate("/");
   } catch (error) {
     console.log(error);
   }
 };
+
+// 1 Litre Whiskey Scottish
+// 2 Litre Vodka Absolute
+// Cola 6 Litre
+// Mineral Water
